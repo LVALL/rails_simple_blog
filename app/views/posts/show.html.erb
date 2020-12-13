@@ -1,29 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @post.author_name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(@post.image, width: 200) %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <section class="col-7 pt-5">
+      <h1> <%= @post.title.capitalize %></h1>
+      <div class="row ml-1">
+          <div class="d-flex position-relative">
+            <div class = "pl-4">
+              <p><%= @post.content %></p>
+              <%= image_tag(@post.image, width: 750, height: 450) %>
+              <h4>Author: <%= @post.author_name %></h4>
+              <%= link_to 'Edit', edit_post_path(@post) %> |
+              <%= link_to 'Back', posts_path %>
+            </div>
+          </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -12,31 +11,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <h5>Name:</h5>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <h5>Title:</h5>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <h5>Content:</h5>
     <%= form.text_area :content %>
   </div>
 
   <div class="field">
-    <%= form.label :author_name %>
+    <h5>Author:</h5>
     <%= form.select :author_name, Author.pluck(:last_name) %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
+    <h5>Image url:</h5>
     <%= form.text_field :image %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-3">
     <%= form.submit %>
   </div>
 <% end %>

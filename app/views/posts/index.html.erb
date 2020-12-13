@@ -1,35 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <section class="col-7 pt-5">
+      <h1>Posts: </h1>
+        <div class="row ml-1">
+          <% @posts.each do |post| %>
+            <div class="d-flex position-relative">
+                <%= image_tag(post.image, width: 200, height: 200) %>
+                <div class = "pl-4">
+                  <h5 class="mt-0"><%= post.title %></h5>
+                  <p><%= post.content %></p>
+                  <h4>Author: <%= post.author_name %></h4>
+                  <%= link_to 'Show', post %>
+                  <%= link_to 'Edit', edit_post_path(post) %>
+                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'New Post', new_post_path %>
+                </div>
+            </div>
+          <% end %>
+      </div>
+    </section>
+  </div>
+</div>
 
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Author</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.author_name %></td>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
