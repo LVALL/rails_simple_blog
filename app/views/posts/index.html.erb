@@ -1,21 +1,24 @@
-<div class="container">
+<div class="container pt-5">
   <div class="row">
     <p id="notice"><%= notice %></p>
-    <section class="col-7 pt-5">
+    <section class="col-8 pt-5">
       <h1>Posts: </h1>
         <div class="row ml-1">
           <% @posts.each do |post| %>
-            <div class="d-flex position-relative">
-                <%= image_tag(post.image, width: 200, height: 200) %>
-                <div class = "pl-4">
+            <div class="col-12 d-flex position-relative bg-info mt-4 rounded-top">
+                <%= image_tag(post.image, width: 300, height: 200, class: "pl-3 mt-3 mb-3 rounded-left") %>
+                <div class = "pl-4 ml-3 mr-3 mt-3 mb-3">
                   <h5 class="mt-0"><%= post.title %></h5>
-                  <p><%= post.content %></p>
+                  <p class="text-justify"><%= post.content %></p>
                   <h4>Author: <%= post.author_name %></h4>
-                  <%= link_to 'Show', post %>
-                  <%= link_to 'Edit', edit_post_path(post) %>
-                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <%= link_to 'New Post', new_post_path %>
                 </div>
+            </div>
+            <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
+              <%= link_to 'Show', post, class: "btn btn-primary text-white mr-1" %>
+              <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning mr-1" %>
+              <%= link_to 'Destroy', post, method: :delete,
+                          data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+              <%= link_to 'New Post', new_post_path, class: "btn btn-success text-white mr-1"  %>
             </div>
           <% end %>
       </div>
