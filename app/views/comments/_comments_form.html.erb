@@ -1,5 +1,5 @@
 <h2>Add a comment:</h2>
-  <% comment = @post.comments.build%>
+  <% comment = @post.comments.build %>
   <%= form_with model: [ @post, comment ], local: true do |form| %>
   <% if comment.errors.any? %>
       <div id="error_explanation">
@@ -14,7 +14,7 @@
 
   <div class="field">
     <h5>Author:</h5>
-    <%= form.select :author_name, Author.pluck(:last_name), class: "form-control" %>
+    <%= form.select :author_id, Author.pluck(:last_name, :id), class: "form-control" %>
   </div>
 
   <div class="field">

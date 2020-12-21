@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :post
-  belongs_to :author, optional: true
+  belongs_to :author
 
   enum status: %i[published unpublished]
   after_initialize do
@@ -8,5 +8,4 @@ class Comment < ApplicationRecord
   end
 
   validates :body, presence: true
-  validates :comment_author, presence: true
 end

@@ -11,7 +11,8 @@
                 <div class = "pl-4 ml-3 mr-3 mt-3 mb-3">
                   <h5 class="mt-0"><%= post.title %></h5>
                   <p class="text-justify"><%= post.content %></p>
-                  <h4>Author: <%= post.author_name %></h4>
+                  <h4>Author: <%= post.author.last_name %></h4>
+                  <p>Posted <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago</p>
                 </div>
             </div>
             <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">

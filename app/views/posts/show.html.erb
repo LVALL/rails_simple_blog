@@ -8,7 +8,7 @@
           <div class = "ml-3 mr-3 mt-3 mb-3 text-center">
             <p class="text-justify"><%= @post.content %></p>
             <%= image_tag(@post.image, width: 750, height: 450, class: "pl-3 mt-3 mb-3 rounded-left") %>
-            <h4>Author: <%= @post.author_name %></h4>
+            <h4>Author: <%= @post.author.first_name %></h4>
           </div>
         </div>
         <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
@@ -18,10 +18,10 @@
       </div>
     </section>
     <section class="col-12 pt-5">
-      <%= render 'comments/comments_form'%>
+      <%= render 'comments/comments' if @post.comments.present? %>
     </section>
     <section class="col-12 pt-5">
-      <%= render 'comments/comments' if @post.comments.present? %>
+      <%= render 'comments/comments_form'%>
     </section>
   </div>
 </div>
