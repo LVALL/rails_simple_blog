@@ -1,0 +1,17 @@
+<h2>Comments</h2>
+  <% @post.comments.each do |comment|%>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.comment_author %>
+    </p>
+
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+
+    <p>
+      <%= link_to 'Destroy', [comment.post, comment], method: :delete,
+                  data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+    </p>
+<% end %>

@@ -13,41 +13,41 @@
 ActiveRecord::Schema.define(version: 2020_12_19_204502) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "gender"
-    t.datetime "birthday"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'authors', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'gender'
+    t.datetime 'birthday'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "comment_author"
-    t.text "body"
-    t.integer "status"
-    t.bigint "post_id", null: false
-    t.bigint "author_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_comments_on_author_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
+  create_table 'comments', force: :cascade do |t|
+    t.string 'comment_author'
+    t.text 'body'
+    t.integer 'status'
+    t.bigint 'post_id', null: false
+    t.bigint 'author_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['author_id'], name: 'index_comments_on_author_id'
+    t.index ['post_id'], name: 'index_comments_on_post_id'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
-    t.text "content"
-    t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "author_id"
-    t.string "author_name"
-    t.index ["author_id"], name: "index_posts_on_author_id"
+  create_table 'posts', force: :cascade do |t|
+    t.string 'name'
+    t.string 'title'
+    t.text 'content'
+    t.string 'image'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'author_id'
+    t.string 'author_name'
+    t.index ['author_id'], name: 'index_posts_on_author_id'
   end
 
-  add_foreign_key "comments", "authors"
-  add_foreign_key "comments", "posts"
+  add_foreign_key 'comments', 'authors'
+  add_foreign_key 'comments', 'posts'
 end

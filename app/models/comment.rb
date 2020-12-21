@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :post
-  belongs_to :author
+  belongs_to :author, optional: true
 
   enum status: %i[published unpublished]
   after_initialize do

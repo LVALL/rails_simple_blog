@@ -17,5 +17,11 @@
         </div>
       </div>
     </section>
+    <section class="col-12 pt-5">
+      <%= render 'comments/comments_form'%>
+    </section>
+    <section class="col-12 pt-5">
+      <%= render 'comments/comments' if @post.comments.present? %>
+    </section>
   </div>
 </div>
