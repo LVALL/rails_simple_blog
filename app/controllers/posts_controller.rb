@@ -5,7 +5,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    @post.views_counter += 1
+    @post.save
+  end
 
   def new
     @post = Post.new
@@ -15,7 +18,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

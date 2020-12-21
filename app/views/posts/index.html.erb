@@ -1,29 +1,36 @@
 <div class="container pt-5">
+  <p id="notice"><%= notice %></p>
   <div class="row">
-    <p id="notice"><%= notice %></p>
-    <section class="col-8 pt-5">
+    <div class="col-12">
       <h1>Posts: </h1>
       <%= link_to 'New Post', new_post_path, class: "btn btn-success text-white mr-1"  %>
-        <div class="row ml-1">
-          <% @posts.each do |post| %>
-            <div class="col-12 d-flex position-relative bg-info mt-4 rounded-top">
-                <%= image_tag(post.image, width: 300, height: 200, class: "pl-3 mt-3 mb-3 rounded-left") %>
-                <div class = "pl-4 ml-3 mr-3 mt-3 mb-3">
-                  <h5 class="mt-0"><%= post.title %></h5>
-                  <p class="text-justify"><%= post.content %></p>
-                  <h4>Author: <%= post.author.last_name %></h4>
-                  <p>Posted <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago</p>
-                </div>
-            </div>
-            <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
-              <%= link_to 'Show', post, class: "btn btn-primary text-white mr-1" %>
-              <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning mr-1" %>
-              <%= link_to 'Destroy', post, method: :delete,
-                          data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-            </div>
-          <% end %>
-      </div>
-    </section>
+    </div>
+
+    <div class="col-12 col-lg-8 ml-3 mt-4">
+      <% @posts.each do |post| %>
+        <div class="row bg-info position-relative rounded">
+          <div class="col-12 col-lg-5 ml-3">
+            <%= image_tag(post.image, width: 300, height: 200, class: "mt-3 mb-3 rounded-left") %>
+          </div>
+
+          <div class="col-12 col-lg-6 mt-3 ml-3 mb-3">
+            <h5 class="mt-0"><%= post.title %></h5>
+            <p class="text-justify"><%= post.content %></p>
+          </div>
+
+          <div class="col-12 col-lg-6 mb-3 ml-3">
+            <h4>Author: <%= post.author.last_name %></h4>
+            <p>Posted <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago</p>
+          </div>
+
+          <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
+            <%= link_to 'Show', post, class: "btn btn-primary text-white mr-1" %>
+            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning mr-1" %>
+            <%= link_to 'Destroy', post, method: :delete,
+                        data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
