@@ -7,5 +7,8 @@ class Comment < ApplicationRecord
     self.status ||= :unpublished if new_record?
   end
 
+  scope :published_comment, -> { where(status: :published) }
+  scope :unpublished_comment, -> { where(status: :unpublished) }
+
   validates :body, presence: true
 end

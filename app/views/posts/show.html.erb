@@ -18,7 +18,8 @@
       </div>
     </section>
     <section class="col-12 pt-5">
-      <%= render 'comments/comments' if @post.comments.present? %>
+      <%= render 'comments/comments' if @post.comments.published.present? %>
+      <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
     </section>
     <section class="col-12 pt-5">
       <%= render 'comments/comments_form'%>
