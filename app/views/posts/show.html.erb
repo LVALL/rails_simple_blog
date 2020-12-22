@@ -20,15 +20,28 @@
         <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
           <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary text-white mr-1" %> |
           <%= link_to 'Back', posts_path, class: "btn btn-primary text-white mr-1" %>
+          <label class="ml-3"><input type="checkbox" name="colorCheckbox" value="show"> Show unpublished comments</label>
         </div>
       </div>
     </div>
-    <section class="col-12 pt-5">
+    <section class="published col-12 pt-5">
       <%= render 'comments/comments' if @post.comments.published.present? %>
+    </section>
+    <section class="show unpublished col-12 pt-5">
       <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
     </section>
     <section class="col-12 pt-5 pb-5">
       <%= render 'comments/comments_form'%>
     </section>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.unpublished').hide();
+            $('input[type="checkbox"]').click(function() {
+                let inputValue = $(this).attr("value");
+                $("." + inputValue).toggle();
+            });
+        });
+    </script>
   </div>
 </div>
