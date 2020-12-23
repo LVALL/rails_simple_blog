@@ -7,8 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = @post.comments.build
-    @post.views_counter += 1
-    @post.save
+    @post.increment!(:views_counter)
   end
 
   def new
