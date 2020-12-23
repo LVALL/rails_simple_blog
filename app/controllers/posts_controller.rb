@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = @post.comments.build
     @post.views_counter += 1
     @post.save
   end

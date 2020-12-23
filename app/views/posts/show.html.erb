@@ -24,10 +24,10 @@
         </div>
       </div>
     </div>
-    <section class="published col-12 pt-5">
+    <section class="published col-8 pt-5">
       <%= render 'comments/comments' if @post.comments.published.present? %>
     </section>
-    <section class="show unpublished col-12 pt-5">
+    <section class="show unpublished col-8 pt-5">
       <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
     </section>
     <section class="col-12 pt-5 pb-5">

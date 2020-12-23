@@ -1,18 +1,21 @@
 <% @post.comments.unpublished_comment.each do |comment|%>
-  <p>
-    <%= comment.author.last_name %>
-  </p>
-  <p>
-    <%= comment.body %>
-  </p>
-  <p>
-    <%= comment.status %>
-  </p>
-  <p>
-    <%= link_to 'Destroy', [comment.post, comment], method: :delete,
-                data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-  </p>
-  <p>
-    <%= link_to 'Publish Comment', post_comment_publish_path(@post.id, comment.id), method: :patch, class: 'btn btn-info' %>
-  </p>
+    <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
+      <h5>Body:</h5>
+      <div class="col-12 mb-5 text-justify">
+        <%== comment.body %>
+      </div>
+      <div class="col-3">
+        <p class="text-justify">Author: <%= comment.author.last_name %></p>
+      </div>
+      <div class="col-3">
+        <p class="text-justify">Status: <%= comment.status %></p>
+      </div>
+      <div class="col-2">
+        <%= link_to 'Destroy', [comment.post, comment], method: :delete,
+                    data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+      </div>
+      <div class="col-4">
+        <%= link_to 'Publish Comment', post_comment_publish_path(@post.id, comment.id), method: :patch, class: 'btn btn-info' %>
+      </div>
+    </div>
 <% end %>

@@ -1,16 +1,19 @@
 <h2>Comments</h2>
 <% @post.comments.published_comment.each do |comment|%>
-  <p>
-    <%= comment.author.last_name %>
-  </p>
-  <p>
-    <%= comment.body %>
-  </p>
-  <p>
-    <%= comment.status %>
-  </p>
-  <p>
-    <%= link_to 'Destroy', [comment.post, comment], method: :delete,
+  <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
+    <h5>Body:</h5>
+    <div class="col-12 mb-5 text-justify">
+      <%== comment.body %>
+    </div>
+    <div class="col-3">
+      <p class="text-justify">Author: <%= comment.author.last_name %></p>
+    </div>
+    <div class="col-3">
+      <p class="text-justify">Status: <%= comment.status %></p>
+    </div>
+    <div class="col-5">
+      <%= link_to 'Destroy', [comment.post, comment], method: :delete,
                   data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-  </p>
+    </div>
+  </div>
 <% end %>
