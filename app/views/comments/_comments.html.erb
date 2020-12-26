@@ -5,8 +5,8 @@
     <div class="col-12 mb-5 text-justify">
       <%== comment.body %>
     </div>
-    <div class="col-3">
-      <p class="text-justify">Author: <%= comment.author.last_name %></p>
+    <div class="col-4">
+      <p class="text-justify">Author: <%= full_name(comment.author) %></p>
     </div>
     <div class="col-3">
       <p class="text-justify">Status: <%= comment.status %></p>

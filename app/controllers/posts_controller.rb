@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :authorize, only: %i[create edit update destroy]
 
   def index
     @posts = Post.all
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -51,6 +52,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :title, :content, :author_id, :image)
+    params.require(:post).permit(:name, :title, :content, :image)
   end
 end

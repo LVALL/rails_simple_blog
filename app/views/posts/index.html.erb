@@ -19,7 +19,7 @@
           </div>
 
           <div class="col-12 col-lg-6 mb-3 ml-3">
-            <h4>Author: <%= post.author.last_name %></h4>
+            <h4>Author: <%= full_name(post.author) %></h4>
             <p>Posted <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago</p>
           </div>
 

@@ -2,12 +2,6 @@
 <%= form_with model: [ @post, @comment ], local: true do |form| %>
 
   <div class="field">
-    <h5>Author:</h5>
-    <%= form.select :author_id, Author.pluck(:last_name, :id), class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <h5>Body:</h5>
     <%= form.text_area :body, class: "form-control" %>
   </div>
 

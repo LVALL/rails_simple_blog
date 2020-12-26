@@ -26,11 +26,6 @@
   </div>
 
   <div class="field">
-    <h5>Author:</h5>
-    <%= form.select :author_id, Author.pluck(:last_name, :id), class: "form-control" %>
-  </div>
-
-  <div class="field">
     <h5>Image url:</h5>
     <%= form.text_field :image, class: "form-control", placeholder: "Image url" %>
   </div>
