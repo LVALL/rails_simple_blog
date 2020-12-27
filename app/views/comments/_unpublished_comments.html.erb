@@ -1,6 +1,9 @@
 <% @post.comments.unpublished_comment.each do |comment|%>
     <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
-      <h5>Body:</h5>
+      <div class="col-12">
+        <h5 class="d-inline-block">Body:</h5>
+        <h6 class="d-inline-block float-right"><%= "Edited" if edited?(comment) %></h6>
+      </div>
       <div class="col-12 mb-5 text-justify">
         <%== comment.body %>
       </div>

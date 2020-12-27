@@ -14,4 +14,8 @@ module ApplicationHelper
 
     true if current_author.id == comment.author_id
   end
+
+  def edited?(comment)
+    comment.created_at != comment.updated_at
+  end
 end

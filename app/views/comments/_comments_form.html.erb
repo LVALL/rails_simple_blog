@@ -1,4 +1,4 @@
-<h2>Add a comment:</h2>
+<h2>Comment:</h2>
 <%= form_with model: [ @post, @comment ], local: true do |form| %>
 
   <div class="field">
@@ -6,6 +6,6 @@
   </div>
 
   <div class="actions mt-3">
-    <%= form.submit %>
+    <%= form.submit "Comment" %>
   </div>
 <% end %>
