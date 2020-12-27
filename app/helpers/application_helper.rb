@@ -18,4 +18,9 @@ module ApplicationHelper
   def edited?(comment)
     comment.created_at != comment.updated_at
   end
+
+  def allowed_to_edit?(comment)
+    hours_since_creation = (Time.zone.now - comment.created_at) / 3600
+    hours_since_creation < 1
+  end
 end
