@@ -1,8 +1,10 @@
 document.addEventListener('turbolinks:load', function () {
-    $(document).ready(function() {
-        $('#modal_button').hide();
-        setTimeout(function () {
-            document.getElementById("modal_button").click();
-        }, 3000);
-    });
+    $('#modal_button').hide();
+    if ( window.location.pathname.includes("posts")) {
+        $(document).ready(function () {
+            setTimeout(function () {
+                document.getElementById("modal_button").click();
+            }, 10000);
+        });
+    }
 });

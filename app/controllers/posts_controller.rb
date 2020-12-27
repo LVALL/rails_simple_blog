@@ -15,6 +15,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def search
+    @posts = Post.where('title ILIKE ?', "%#{params[:q]}%")
+    render :index
+  end
+
   def edit; end
 
   def create

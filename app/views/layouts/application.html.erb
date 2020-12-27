@@ -12,7 +12,7 @@
 
   <body>
     <%= render 'layouts/navigation'%>
-    <%= render 'layouts/modal_login'%>
+    <%= render 'layouts/modal_login' if current_user.nil? %>
     <%= yield %>
   </body>
 </html>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :sessions
   resources :posts do
+    get :search, on: :collection
     resources :comments do
       patch :publish
     end
