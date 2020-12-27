@@ -10,12 +10,16 @@
       <div class="col-3">
         <p class="text-justify">Status: <%= comment.status %></p>
       </div>
-      <div class="col-2">
-        <%= link_to 'Destroy', [comment.post, comment], method: :delete,
-                    data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-      </div>
-      <div class="col-4">
-        <%= link_to 'Publish Comment', post_comment_publish_path(@post.id, comment.id), method: :patch, class: 'btn btn-info' %>
-      </div>
+      <% if comment_author?(current_user, comment) %>
+        <div class="col-12">
+          <div class="d-inline-block float-right ml-3">
+            <%= link_to 'Destroy', [comment.post, comment], method: :delete,
+                        data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+          </div>
+          <div class="d-inline-block float-right ml-3">
+            <%= link_to 'Publish Comment', post_comment_publish_path(@post.id, comment.id), method: :patch, class: 'btn btn-info' %>
+          </div>
+        </div>
+      <% end %>
     </div>
 <% end %>

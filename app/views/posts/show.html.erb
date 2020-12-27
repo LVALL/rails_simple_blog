@@ -21,6 +21,13 @@
           <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary text-white mr-1" %> |
           <%= link_to 'Back', posts_path, class: "btn btn-primary text-white mr-1" %>
           <label class="ml-3"><input type="checkbox" name="colorCheckbox" value="show"> Show unpublished comments</label>
+          <% if post_author?(current_user, @post) %>
+            <div class="post_actions d-inline-block float-right">
+              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-warning mr-1" %>
+              <%= link_to 'Destroy', @post, method: :delete,
+                          data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -30,18 +37,12 @@
     <section class="show unpublished col-8 pt-5">
       <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
     </section>
-    <section class="col-12 pt-5 pb-5">
-      <%= render 'comments/comments_form'%>
+    <section class="col-9 pt-5 pb-5">
+      <% if current_user.present? %>
+        <%= render 'comments/comments_form'%>
+      <% else %>
+        <%= render 'comments/login_to_comment'%>
+      <% end %>
     </section>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.unpublished').hide();
-            $('input[type="checkbox"]').click(function() {
-                let inputValue = $(this).attr("value");
-                $("." + inputValue).toggle();
-            });
-        });
-    </script>
   </div>
 </div>
