@@ -2,6 +2,7 @@ class Author < ApplicationRecord
   has_many :posts
   has_many :comments
   has_secure_password
+  mount_uploader :avatar, AvatarUploader
 
   PASSWORD_REQUIREMENTS = /\A
     (?=.{8,255})

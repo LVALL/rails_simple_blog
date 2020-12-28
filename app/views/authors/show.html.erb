@@ -5,6 +5,7 @@
         <div class="col-12 d-flex position-relative bg-info mt-4 rounded-top">
           <div class="col-12 mr-3 mt-3 mb-3 text-center">
             <h4><%= full_name(current_user) %></h4>
+            <%= image_tag(current_user.avatar.thumb.url) %>
           </div>
         </div>
 

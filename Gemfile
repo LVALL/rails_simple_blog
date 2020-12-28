@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # fake data for seeding db
 gem 'faker', '~> 2.15', '>= 2.15.1'
+
+# uploader
+gem 'carrierwave', '~> 2.0'
