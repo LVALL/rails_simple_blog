@@ -5,7 +5,7 @@
       <h1>Posts: </h1>
       <%= form_with url: search_posts_path, class: "d-inline-block float-right", method: :get, local: true do |f| %>
         <%= f.text_field :q, id: :q %>
-        <%= f.submit "Search" %>
+        <%= f.submit "Search", class: 'btn btn-sm btn-outline-info text-dark' %>
       <% end %>
       <%= link_to 'New Post', new_post_path, class: "btn btn-success text-white mr-1 d-inline-block"  %>
     </div>

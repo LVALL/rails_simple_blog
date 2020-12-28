@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  def show; end
 
   def new
     @author = Author.new

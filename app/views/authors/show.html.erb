@@ -1,0 +1,21 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1> User profile </h1>
+    </div>
+
+    <div class="col-12 col-lg-12 ml-3 mt-4">
+      <div class="row bg-info position-relative rounded">
+        <div class="col-12 d-flex position-relative bg-info mt-4 rounded-top">
+          <div class="col-12 mr-3 mt-3 mb-3 text-center">
+            <h4><%= full_name(current_user) %></h4>
+          </div>
+        </div>
+
+        <div class="col-12 bg-light pt-3 pb-3 rounded-bottom">
+          <%= link_to 'Back', posts_path, class: "btn btn-primary text-white mr-1" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

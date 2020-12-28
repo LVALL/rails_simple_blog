@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row float-right mr-3 mt-3">
     <% if current_user %>
-      Logged in as <%= full_name(current_user) %>
+      <%= link_to "#{full_name(current_user)}", current_user, class: 'btn btn-outline-info ml-3' %>
       <%= link_to "Log Out", logout_path, class: 'btn btn-light ml-3' %>
     <% else %>
       <%= link_to "Sign Up", signup_path, class: 'btn btn-light ml-3' %>
