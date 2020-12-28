@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <section class="col-12 pt-5">
+      <h1>Editing profile</h1>
+      <%= render 'form', post: current_user %>
+      <div class="pt-2">
+        <%= link_to 'Back', author_path, class: "btn btn-primary text-white mr-1" %>
+      </div>
+    </section>
+  </div>
+</div>

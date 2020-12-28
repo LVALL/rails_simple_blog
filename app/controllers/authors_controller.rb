@@ -5,6 +5,16 @@ class AuthorsController < ApplicationController
     @author = Author.new
   end
 
+  def edit; end
+
+  def update
+    if current_user.update(author_params)
+      redirect_to author_path(current_user), notice: 'Profile was successfully updated.'
+    else
+      redirect_to author_path(current_user)
+    end
+  end
+
   def create
     @author = Author.new(author_params)
     if @author.save
