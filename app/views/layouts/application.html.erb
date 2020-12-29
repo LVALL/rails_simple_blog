@@ -12,7 +12,8 @@
 
   <body>
     <%= render 'layouts/navigation'%>
-    <%= render 'layouts/modal_login' if current_user.nil? %>
+    <button type="button" id="modal_button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"></button>
+    <%= render 'layouts/modal_login' if current_user.nil? && show_modal? %>
     <%= yield %>
   </body>
 </html>

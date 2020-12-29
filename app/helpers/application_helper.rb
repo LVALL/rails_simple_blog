@@ -23,4 +23,8 @@ module ApplicationHelper
     hours_since_creation = (Time.zone.now - comment.created_at) / 3600
     hours_since_creation < 1
   end
+
+  def show_modal?
+    (cookies[:actions] % 5).zero?
+  end
 end

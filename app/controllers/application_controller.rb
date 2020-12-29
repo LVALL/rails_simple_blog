@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :set_cookies
+
   private
+
+  def set_cookies
+    cookies[:actions] = 5
+  end
 
   def current_user
     @current_user ||= Author.find(session[:author_id]) if session[:author_id]
