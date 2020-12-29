@@ -1,13 +1,19 @@
-<h1>Log In</h1>
-
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <section class="col-7 pt-5 mt-5">
+      <h1 class="mb-5 col-12 text-center">Log In</h1>
+      <%= form_with url: sessions_path do |form|%>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.text_field :email, class: "col-8 form-control float-right", placeholder: "Email" %>
+        </div>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.password_field :password, class: "col-8 form-control float-right", placeholder: "Password" %>
+        </div>
+        <div class="actions col-12 d-flex justify-content-center">
+          <%= form.submit "Log In", class: 'col-5 btn btn-info text-dark' %>
+        </div>
+      <% end %>
+    </section>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
-<% end %>
+</div>

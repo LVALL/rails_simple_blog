@@ -1,36 +1,38 @@
-<h1>Sign Up</h1>
-
-<%= form_for @author do |f| %>
-  <% if @author.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @author.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <section class="col-7 pt-5 mt-5">
+      <h1 class="mb-5 col-12 text-center">Sign Up</h1>
+      <%= form_for @author do |form| %>
+        <% if @author.errors.any? %>
+          <div class="error_messages ml-5">
+            <ul>
+              <% @author.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.text_field :first_name, class: "col-8 form-control float-right", placeholder: "First name" %>
+        </div>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.text_field :last_name, class: "col-8 form-control float-right", placeholder: "Last name" %>
+        </div>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.text_field :email, class: "col-8 form-control float-right", placeholder: "Email" %>
+        </div>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.password_field :password, class: "col-8 form-control float-right", placeholder: "Password" %>
+        </div>
+        <div class="field col-12 d-flex justify-content-center mb-4">
+          <%= form.password_field :password_confirmation, class: "col-8 form-control float-right", placeholder: "Password confirmation" %>
+        </div>
+        <div class="actions col-12 d-flex justify-content-center">
+          <%= form.submit "Sign Up", class: 'col-5 btn btn-info text-dark' %>
+        </div>
+      <% end %>
+    </section>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit "Sign Up" %></div>
-<% end %>
+</div>
