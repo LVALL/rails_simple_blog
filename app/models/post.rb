@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :author
   has_many :comments, dependent: :destroy
+  has_rich_text :content
 
   after_initialize do
     self.views_counter ||= 0 if new_record?
