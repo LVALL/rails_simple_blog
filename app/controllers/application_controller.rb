@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_cookies
-    cookies[:actions] = 5
+    cookies[:actions] = cookies[:actions].present? ? cookies[:actions].to_i + 1 : 1
   end
 
   def current_user
