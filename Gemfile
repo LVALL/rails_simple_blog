@@ -61,3 +61,6 @@ gem 'carrierwave', '~> 2.0'
 
 # nested comments
 gem 'ancestry'
+
+# pagination
+gem 'will_paginate-bootstrap4'
