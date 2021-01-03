@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authorize, except: %i[index show]
 
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 8)
+    @posts = Post.paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -25,30 +25,24 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-    end
+    redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
   private
