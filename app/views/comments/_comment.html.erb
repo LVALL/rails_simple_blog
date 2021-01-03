@@ -1,5 +1,5 @@
 <% comments.each do |parent, children| %>
-  <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
+  <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded comment_card">
     <div class="col-12">
       <h5 class="d-inline-block">
         <% if parent.author.avatar.present? %>
@@ -11,12 +11,15 @@
       <h5 class="d-inline-block ml-2"><%= full_name(parent.author) %></h5>
       <h6 class="d-inline-block float-right"><%= "Edited" if edited?(parent) %></h6>
     </div>
+
     <div class="col-12 mb-5 text-justify">
       <%== parent.body %>
     </div>
+
     <div class="col-7">
       <p class="text-justify">Status: <%= parent.status %></p>
     </div>
+
     <% if current_user.present? %>
       <div class="col-12">
         <div class="d-inline-block float-right ml-3">
@@ -30,11 +33,13 @@
           <button class='btn btn-outline-info reply_button'>Reply</button>
         </div>
       </div>
+
       <div class="col-12 comment_reply_form mt-4">
         <%= render 'comments/comments_form', parent_id: parent.id %>
       </div>
     <% end %>
   </div>
+
   <div class="col-12 ml-5">
     <%= render 'comments/comment', comments: children %>
   </div>
