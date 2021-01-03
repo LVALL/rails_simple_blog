@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
 
   enum status: %i[published unpublished]
   after_initialize do
-    self.status ||= :unpublished if new_record?
+    self.status ||= :published if new_record?
   end
 
   scope :published_comment, -> { where(status: :published) }

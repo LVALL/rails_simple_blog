@@ -31,18 +31,22 @@
         </div>
       </div>
     </div>
-    <section class="published col-8 pt-5">
-      <%= render 'comments/comments' if @post.comments.published.present? %>
-    </section>
-    <section class="show unpublished col-8 pt-5">
-      <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
-    </section>
     <section class="col-9 pt-5 pb-5">
       <% if current_user.present? %>
+        <h2>Comment:</h2>
         <%= render 'comments/comments_form', parent_id: nil%>
       <% else %>
         <%= render 'comments/login_to_comment'%>
       <% end %>
     </section>
   </div>
+  <div class="row">
+    <section class="published col-8 pt-5">
+      <%= render 'comments/comments' if @post.comments.published.present? %>
+    </section>
+    <section class="show unpublished col-8 pt-5">
+      <%= render 'comments/unpublished_comments' if @post.comments.unpublished.present? %>
+    </section>
+  </div>
 </div>
+

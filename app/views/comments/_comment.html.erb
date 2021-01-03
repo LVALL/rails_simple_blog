@@ -1,42 +1,43 @@
 <% comments.each do |parent, children| %>
-  <div class="level">
-    <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
+  <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
+    <div class="col-12">
+      <h5 class="d-inline-block">
+        <% if parent.author.avatar.present? %>
+          <%= image_tag(parent.author.avatar.small.url, class: "rounded-circle") %>
+        <% else %>
+          <%= image_tag('http://www.gravatar.com/avatar', width: 40, height: 40, class: "rounded-circle") %>
+        <% end %>
+      </h5>
+      <h5 class="d-inline-block ml-2"><%= full_name(parent.author) %></h5>
+      <h6 class="d-inline-block float-right"><%= "Edited" if edited?(parent) %></h6>
+    </div>
+    <div class="col-12 mb-5 text-justify">
+      <%== parent.body %>
+    </div>
+    <div class="col-7">
+      <p class="text-justify">Status: <%= parent.status %></p>
+    </div>
+    <% if current_user.present? %>
       <div class="col-12">
-        <h5 class="d-inline-block">
-          <% if parent.author.avatar.present? %>
-            <%= image_tag(parent.author.avatar.small.url, class: "rounded-circle") %>
-          <% else %>
-            <%= image_tag('http://www.gravatar.com/avatar', width: 40, height: 40, class: "rounded-circle") %>
-          <% end %>
-        </h5>
-        <h5 class="d-inline-block ml-2"><%= full_name(parent.author) %></h5>
-        <h6 class="d-inline-block float-right"><%= "Edited" if edited?(parent) %></h6>
-      </div>
-      <div class="col-12 mb-5 text-justify">
-        <%== parent.body %>
-      </div>
-      <div class="col-7">
-        <p class="text-justify">Status: <%= parent.status %></p>
-      </div>
-      <% if current_user.present? %>
-        <div class="col-12">
-          <div class="d-inline-block float-right ml-3">
-            <% if comment_author?(current_user, parent) %>
-              <%= link_to 'Destroy', [parent.post, parent], method: :delete,
-                          data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-              <% if allowed_to_edit?(parent) %>
-                <%= link_to 'Edit', edit_post_comment_path(parent.post, parent), class: "btn btn-info text-white mr-1" %>
-              <% end %>
+        <div class="d-inline-block float-right ml-3">
+          <% if comment_author?(current_user, parent) %>
+            <%= link_to 'Destroy', [parent.post, parent], method: :delete,
+                        data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+            <% if allowed_to_edit?(parent) %>
+              <%= link_to 'Edit', edit_post_comment_path(parent.post, parent), class: "btn btn-info text-white mr-1" %>
             <% end %>
-            <button class='btn btn-outline-info reply_button'>Reply</button>
-          </div>
+          <% end %>
+          <button class='btn btn-outline-info reply_button'>Reply</button>
         </div>
-      <% end %>
-    </div>
-
-    <%= render 'comments/comments_form', parent_id: parent.id %>
-    <div class="level ml-5">
-      <%= render 'comments/comment', comments: children %>
-    </div>
+      </div>
+      <div class="col-12 comment_reply_form mt-4">
+        <%= render 'comments/comments_form', parent_id: parent.id %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-12 ml-5">
+    <%= render 'comments/comment', comments: children %>
   </div>
 <% end %>
+<!--comment_reply_form-->
+<!--reply_button-->
