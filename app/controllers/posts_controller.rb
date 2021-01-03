@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.roots
     @comment = @post.comments.build
     @post.increment!(:views_counter)
   end

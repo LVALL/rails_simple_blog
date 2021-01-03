@@ -1,6 +1,8 @@
 <h2>Comment:</h2>
 <%= form_with model: [ @post, @comment ], local: true do |form| %>
 
+  <%= form.hidden_field :parent_id, value: parent_id if parent_id.present? %>
+
   <div class="field">
     <%= form.text_area :body, class: "form-control" %>
   </div>

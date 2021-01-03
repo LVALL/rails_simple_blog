@@ -1,33 +1,4 @@
 <h2>Comments</h2>
-<% @post.comments.published_comment.each do |comment|%>
-  <div class="row ml-2 shadow-lg bg-light p-3 mb-5 rounded">
-    <div class="col-12">
-      <h5 class="d-inline-block">
-        <% if comment.author.avatar.present? %>
-          <%= image_tag(comment.author.avatar.small.url, class: "rounded-circle") %>
-        <% else %>
-          <%= image_tag('http://www.gravatar.com/avatar', width: 40, height: 40, class: "rounded-circle") %>
-        <% end %>
-      </h5>
-      <h5 class="d-inline-block ml-2"><%= full_name(comment.author) %></h5>
-      <h6 class="d-inline-block float-right"><%= "Edited" if edited?(comment) %></h6>
-    </div>
-    <div class="col-12 mb-5 text-justify">
-      <%== comment.body %>
-    </div>
-    <div class="col-7">
-      <p class="text-justify">Status: <%= comment.status %></p>
-    </div>
-    <% if comment_author?(current_user, comment) %>
-      <div class="col-12">
-        <div class="d-inline-block float-right ml-3">
-          <%= link_to 'Destroy', [comment.post, comment], method: :delete,
-                      data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
-          <% if allowed_to_edit?(comment) %>
-            <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "btn btn-info text-white mr-1" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<% @comments.published_comment.each do |comment|%>
+  <%= render 'comments/comment', comments: comment.subtree.arrange %>
 <% end %>

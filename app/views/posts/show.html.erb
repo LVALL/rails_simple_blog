@@ -39,7 +39,7 @@
     </section>
     <section class="col-9 pt-5 pb-5">
       <% if current_user.present? %>
-        <%= render 'comments/comments_form'%>
+        <%= render 'comments/comments_form', parent_id: nil%>
       <% else %>
         <%= render 'comments/login_to_comment'%>
       <% end %>

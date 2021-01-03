@@ -58,3 +58,6 @@ gem 'faker', '~> 2.15', '>= 2.15.1'
 
 # uploader
 gem 'carrierwave', '~> 2.0'
+
+# nested comments
+gem 'ancestry'
