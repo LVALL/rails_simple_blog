@@ -1,6 +1,7 @@
 class Author < ApplicationRecord
   has_many :posts
   has_many :comments
+  has_many :author_comment_votes, dependent: :destroy
   has_secure_password
   mount_uploader :avatar, AvatarUploader
 

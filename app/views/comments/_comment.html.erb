@@ -24,8 +24,8 @@
       <div class="col-12">
         <div class="d-inline-block float-right ml-3">
           <% if comment_author?(current_user, parent) %>
-            <%= link_to 'Destroy', [parent.post, parent], method: :delete,
-                        data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white mr-1" %>
+            <%= link_to 'Destroy', [parent.post, parent], method: :delete, remote: true,
+                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger destroy text-white mr-1" %>
             <% if allowed_to_edit?(parent) %>
               <%= link_to 'Edit', edit_post_comment_path(parent.post, parent), class: "btn btn-info text-white mr-1" %>
             <% end %>
@@ -44,5 +44,3 @@
     <%= render 'comments/comment', comments: children %>
   </div>
 <% end %>
-<!--comment_reply_form-->
-<!--reply_button-->
