@@ -22,6 +22,12 @@
 
     <% if current_user.present? %>
       <div class="col-12">
+        <%= parent.author_comment_votes.liked.count %>
+        <%= link_to '👍', post_comment_like_path(post_id: parent.post.id, comment_id: parent.id), method: :post,
+                    remote: true, class: "btn btn-light text-white mr-1" %>
+        <%= parent.author_comment_votes.disliked.count %>
+        <%= link_to '👎', post_comment_dislike_path(post_id: parent.post.id, comment_id: parent.id), method: :post,
+                    remote: true, class: "btn btn-light text-white mr-1" %>
         <div class="d-inline-block float-right ml-3">
           <% if comment_author?(current_user, parent) %>
             <%= link_to 'Destroy', [parent.post, parent], method: :delete, remote: true,
