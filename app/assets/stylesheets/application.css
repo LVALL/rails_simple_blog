@@ -14,3 +14,10 @@
  *= require_self
  *= require bootstrap
  */
+
+.field_with_errors {
+    background-color: transparent !important;
+}
+.col-8 {
+    max-width: 100%  !important;
+}
