@@ -13,5 +13,12 @@ class Comment < ApplicationRecord
   scope :published_comment, -> { where(status: :published) }
   scope :unpublished_comment, -> { where(status: :unpublished) }
 
+  validate :limit_depth
   validates :body, presence: true
+
+  private
+
+  def limit_depth
+    errors.add(:comment, 'Maximum level of nested comments is 5') if depth >= 6
+  end
 end

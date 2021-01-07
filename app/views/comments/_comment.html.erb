@@ -24,19 +24,23 @@
       <div class="col-12">
         <%= parent.author_comment_votes.liked.count %>
         <%= link_to '👍', post_comment_like_path(post_id: parent.post.id, comment_id: parent.id), method: :post,
-                    remote: true, class: "btn btn-light text-white mr-1" %>
+                    'data-turbolinks-scroll': false, remote: true, class: "btn btn-light text-white mr-1" %>
+
         <%= parent.author_comment_votes.disliked.count %>
         <%= link_to '👎', post_comment_dislike_path(post_id: parent.post.id, comment_id: parent.id), method: :post,
-                    remote: true, class: "btn btn-light text-white mr-1" %>
+                    'data-turbolinks-scroll': false, remote: true, class: "btn btn-light text-white mr-1" %>
+
         <div class="d-inline-block float-right ml-3">
           <% if comment_author?(current_user, parent) %>
             <%= link_to 'Destroy', [parent.post, parent], method: :delete, remote: true,
-                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger destroy text-white mr-1" %>
-            <% if allowed_to_edit?(parent) %>
-              <%= link_to 'Edit', edit_post_comment_path(parent.post, parent), class: "btn btn-info text-white mr-1" %>
-            <% end %>
+                        'data-turbolinks-scroll': false, class: "btn btn-danger destroy text-white mr-1" %>
+            <%= link_to 'Edit', edit_post_comment_path(parent.post, parent),
+                        class: "btn btn-info text-white mr-1" if allowed_to_edit?(parent) %>
           <% end %>
-          <button class='btn btn-outline-info reply_button'>Reply</button>
+
+          <% if parent.ancestors.count < 5 %>
+            <button class='btn btn-outline-info reply_button'>Reply</button>
+          <% end %>
         </div>
       </div>
 
